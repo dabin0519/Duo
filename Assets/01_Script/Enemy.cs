@@ -16,7 +16,16 @@ public class Enemy : MonoBehaviour
         if(gameObject.transform.position.y <= -7)
         {
             Destroy(gameObject);
-            playerHealth.health--;
+            //마을 공격
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Player")
+        {
+            Destroy(gameObject);
+            playerHealth.OnDamage();
         }
     }
 }

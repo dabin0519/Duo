@@ -19,11 +19,5 @@ public class Damage : MonoBehaviour
         {
             Destroy(collision.gameObject);
         }
-
-        if(type == ColliderType.Player && collision.gameObject.tag == "Enemy")
-        {
-            Destroy(collision.gameObject);
-            Destroy(gameObject);
-        }
     }
 }

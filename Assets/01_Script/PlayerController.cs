@@ -53,11 +53,11 @@ public class PlayerController : MonoBehaviour
                     playerAnim.SetFloat("MoveInput", 1f);
                 }
             }
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            StartCoroutine(Attack());
+            else if (Input.GetKeyDown(KeyCode.Space))
+            {
+                playerAnim.SetBool("PlayerAttack", true);
+                StartCoroutine(Attack());
+            }
         }
     }
 
@@ -65,6 +65,11 @@ public class PlayerController : MonoBehaviour
     {
         player.transform.DOMove(transforms[i], moveTime);
         StartCoroutine(MoveCheck());
+    }
+
+    public void FinishAttack()
+    {
+        playerAnim.SetBool("PlayerAttack",false);
     }
 
     IEnumerator MoveCheck()
@@ -78,7 +83,7 @@ public class PlayerController : MonoBehaviour
     IEnumerator Attack()
     {
         attack.SetActive(true);
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.5f);
         attack.SetActive(false);
     }
 }
