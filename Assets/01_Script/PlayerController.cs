@@ -11,12 +11,14 @@ public class PlayerController : MonoBehaviour
     public GameObject attack;
     public float moveTime;
 
+    private Animator playerAnim;
     private int maxLine;
     private int i;
     private bool isMove;
 
     private void Start()
     {
+        playerAnim = GetComponent<Animator>();
         attack.SetActive(false);
         isMove = true;
         maxLine = transforms.Length;
@@ -39,7 +41,7 @@ public class PlayerController : MonoBehaviour
                 {
                     i++;
                     MovePlayer(i);
-
+                    playerAnim.SetFloat("MoveInput", 0.5f);
                 }
             }
             else if (Input.GetKeyDown(KeyCode.LeftArrow))
@@ -48,6 +50,7 @@ public class PlayerController : MonoBehaviour
                 {
                     i--;
                     MovePlayer(i);
+                    playerAnim.SetFloat("MoveInput", 1f);
                 }
             }
         }
@@ -68,6 +71,7 @@ public class PlayerController : MonoBehaviour
     {
         isMove = false;
         yield return new WaitForSeconds(moveTime);
+        playerAnim.SetFloat("MoveInput", 0);
         isMove = true;
     }
 
