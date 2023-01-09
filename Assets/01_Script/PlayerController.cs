@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     public Vector2[] transforms;
     public GameObject player;
+    public GameObject attack;
     public float moveTime;
 
     private int maxLine;
@@ -16,6 +17,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        attack.SetActive(false);
         isMove = true;
         maxLine = transforms.Length;
         i = maxLine / 2;
@@ -48,7 +50,11 @@ public class PlayerController : MonoBehaviour
                     MovePlayer(i);
                 }
             }
+        }
 
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            StartCoroutine(Attack());
         }
     }
 
@@ -63,5 +69,12 @@ public class PlayerController : MonoBehaviour
         isMove = false;
         yield return new WaitForSeconds(moveTime);
         isMove = true;
+    }
+
+    IEnumerator Attack()
+    {
+        attack.SetActive(true);
+        yield return new WaitForSeconds(0.2f);
+        attack.SetActive(false);
     }
 }
