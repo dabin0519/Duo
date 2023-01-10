@@ -7,7 +7,6 @@ public class Enemy : MonoBehaviour
     private PlayerHealth playerHealth;
     private Animator enemyAnim;
     private CircleCollider2D circleCollider;
-    private Rigidbody2D enemyRigid;
     private ScoreSystem scoreSystem;
 
     public bool OnDie
@@ -21,7 +20,6 @@ public class Enemy : MonoBehaviour
         playerHealth = FindObjectOfType<PlayerHealth>();
         circleCollider = GetComponent<CircleCollider2D>();
         enemyAnim = GetComponent<Animator>();
-        enemyRigid = GetComponent<Rigidbody2D>();
         scoreSystem = FindObjectOfType<ScoreSystem>();
     }
 
@@ -48,7 +46,6 @@ public class Enemy : MonoBehaviour
     private void Die()
     {
         Destroy(circleCollider);
-        Destroy(enemyRigid);
         enemyAnim.SetBool("IsDie", true);
     }
 
