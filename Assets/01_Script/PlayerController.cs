@@ -9,11 +9,13 @@ public class PlayerController : MonoBehaviour
     public Vector2[] transforms;
     public GameObject player;
     public GameObject attack;
+    public GameObject attack2;
     public float moveTime;
 
     private Animator playerAnim;
     private int maxLine;
     private int i;
+    private int attackNum;
     private bool isMove;
 
     private void Start()
@@ -55,8 +57,18 @@ public class PlayerController : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.Space))
             {
-                playerAnim.SetBool("PlayerAttack", true);
-                StartCoroutine(Attack());
+                switch (attackNum)
+                {
+                    case 0:
+                        playerAnim.SetBool("PlayerAttack", true);
+                        attackNum++;
+                    break;
+
+                    case 1:
+                        playerAnim.SetBool("PlayerAttack2", true);
+                        attackNum = 0;
+                    break;
+                }
             }
         }
     }
@@ -67,9 +79,26 @@ public class PlayerController : MonoBehaviour
         StartCoroutine(MoveCheck());
     }
 
+    public void OnAttack(int i)
+    {
+        switch (i)
+        {
+            case 0:
+                attack.SetActive(true);
+            break;
+
+            case 1:
+                attack2.SetActive(true);
+            break ;
+        }
+    }
+
     public void FinishAttack()
     {
         playerAnim.SetBool("PlayerAttack",false);
+        playerAnim.SetBool("PlayerAttack2", false);
+        attack.SetActive(false);
+        attack2.SetActive(false);
     }
 
     IEnumerator MoveCheck()
@@ -80,10 +109,9 @@ public class PlayerController : MonoBehaviour
         isMove = true;
     }
 
-    IEnumerator Attack()
+    public void OnDie()
     {
-        attack.SetActive(true);
-        yield return new WaitForSeconds(0.5f);
-        attack.SetActive(false);
+        isMove = false;
+        playerAnim.SetBool("IsDie", true);
     }
 }

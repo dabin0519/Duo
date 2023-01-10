@@ -12,11 +12,14 @@ public class PlayerHealth : MonoBehaviour
         get { return health; }
         set { health = value; }
     }
+
+    private PlayerController playerController;
     private int health = 0;
 
     private void Start()
     {
         health = 3;
+        playerController = GetComponent<PlayerController>();
     }
 
     void Update()
@@ -24,7 +27,7 @@ public class PlayerHealth : MonoBehaviour
         if(health == 0)
         {
             //player die
-            Destroy(gameObject);
+            playerController.OnDie();
             healthImage.fillAmount = 0;
         }
     }

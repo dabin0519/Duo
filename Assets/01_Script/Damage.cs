@@ -13,11 +13,18 @@ public class Damage : MonoBehaviour
 {
     public ColliderType type;
 
+    private Enemy enemy;
+
+    private void Awake()
+    {
+        enemy = GetComponent<Enemy>();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(type == ColliderType.Attack && collision.gameObject.tag == "Enemy")
+        if(type == ColliderType.Enemy && collision.gameObject.tag ==  "Attack")
         {
-            Destroy(collision.gameObject);
+            enemy.OnDie = true;
         }
     }
 }
