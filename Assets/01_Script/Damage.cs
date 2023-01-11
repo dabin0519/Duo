@@ -15,11 +15,12 @@ public class Damage : MonoBehaviour
     public ColliderType type;
 
     private Enemy enemy;
-    private Animator personAnim;
+    private Person person;
 
     private void Awake()
     {
         enemy = GetComponent<Enemy>();
+        person = GetComponent<Person>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -28,10 +29,10 @@ public class Damage : MonoBehaviour
         {
             enemy.OnDie = true;
         }
-        else if(type == ColliderType.Person && collision.gameObject.tag == "Attack")
+
+        if(type == ColliderType.Person && collision.gameObject.tag == "Attack")
         {
-            personAnim = GetComponent<Animator>();
-            personAnim.SetBool("IsDie", true);
+            person.OnDie();
         }
     }
 }

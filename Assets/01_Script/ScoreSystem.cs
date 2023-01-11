@@ -16,6 +16,9 @@ public class ScoreSystem : MonoBehaviour
 
     private void Update()
     {
-        scoreTxt.text = $"Score : {score}";
+        if(score >= 0)
+        {
+            scoreTxt.text = $"Score : {score}";
+        }
     }
 }
