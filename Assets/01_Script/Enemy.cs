@@ -9,12 +9,6 @@ public class Enemy : MonoBehaviour
     private CircleCollider2D circleCollider;
     private ScoreSystem scoreSystem;
 
-    public bool OnDie
-    {
-        get;
-        set;
-    }
-
     private void Start()
     {
         playerHealth = FindObjectOfType<PlayerHealth>();
@@ -30,8 +24,6 @@ public class Enemy : MonoBehaviour
             Destroy(gameObject);
             //마을 공격
         }
-
-        if(OnDie) Die();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -43,7 +35,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void Die()
+    public void OnDie()
     {
         Destroy(circleCollider);
         enemyAnim.SetBool("IsDie", true);

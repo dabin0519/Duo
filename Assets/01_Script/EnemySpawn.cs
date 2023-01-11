@@ -22,13 +22,17 @@ public class EnemySpawn : MonoBehaviour
                 case 4:
                 case 5:
                 case 6:
-                case 7:
                     StartCoroutine(SpawnObj(0));
                     break;
+                case 7:
                 case 8:
-                case 9:
-                case 10:
                     StartCoroutine(SpawnObj(1));
+                    break;
+                case 9:
+                    StartCoroutine(SpawnObj(2));
+                    break;
+                case 10:
+                    //장산범 소환
                     break;
             }
         }
