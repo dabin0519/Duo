@@ -8,7 +8,8 @@ public enum ColliderType
     Player,
     Enemy,
     Person,
-    Fox
+    Fox,
+    Tiger
 }
 
 public class Damage : MonoBehaviour
@@ -18,12 +19,16 @@ public class Damage : MonoBehaviour
     private Enemy enemy;
     private Person person;
     private Fox fox;
+    private Tiger tiger;
+    private PlayerHealth playerHealth;
 
     private void Awake()
     {
         enemy = GetComponent<Enemy>();
         person = GetComponent<Person>();
         fox = GetComponent<Fox>();
+        tiger = GetComponent<Tiger>();
+        playerHealth = GetComponent<PlayerHealth>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -32,15 +37,22 @@ public class Damage : MonoBehaviour
         {
             enemy.OnDie();
         }
-
-        if(type == ColliderType.Person && collision.gameObject.tag == "Attack")
+        else if(type == ColliderType.Person && collision.gameObject.tag == "Attack")
         {
             person.OnDie();
         }
-
-        if(type == ColliderType.Fox && collision.gameObject.tag == "Attack")
+        else if(type == ColliderType.Fox && collision.gameObject.tag == "Attack")
         {
             fox.OnDie();
+        }
+        else if(type == ColliderType.Tiger && collision.gameObject.tag == "Attack")
+        {
+            tiger.OnDie();
+        }
+        else if(type == ColliderType.Player && collision.gameObject.tag == "Enemy")
+        {
+            playerHealth.OnDamage();
+            Destroy(collision.gameObject);
         }
     }
 }

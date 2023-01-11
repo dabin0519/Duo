@@ -2,40 +2,42 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Tiger : MonoBehaviour
 {
-    private Animator enemyAnim;
+    private Animator tigerAnim;
     private CircleCollider2D circleCollider;
     private ScoreSystem scoreSystem;
     private CityHealth cityHealth;
 
+    private bool isDie = true;
+
     private void Start()
     {
+        tigerAnim = GetComponent<Animator>();
         circleCollider = GetComponent<CircleCollider2D>();
-        enemyAnim = GetComponent<Animator>();
         scoreSystem = FindObjectOfType<ScoreSystem>();
         cityHealth = FindObjectOfType<CityHealth>();
     }
 
     private void Update()
     {
-        if(gameObject.transform.position.y <= -7)
+        if (gameObject.transform.position.y <= -7 && !isDie)
         {
             Destroy(gameObject);
-            //마을 공격
             cityHealth.OnDamage();
         }
     }
 
     public void OnDie()
     {
+        isDie = true;
         Destroy(circleCollider);
-        enemyAnim.SetBool("IsDie", true);
+        tigerAnim.SetBool("IsDie", true);
     }
 
     public void FinishDie()
     {
         Destroy(gameObject);
-        scoreSystem.Score += 100;
+        scoreSystem.Score += 150;
     }
 }

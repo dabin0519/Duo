@@ -7,12 +7,14 @@ public class Person : MonoBehaviour
     private Animator personAnim;
     private Movement personMovement;
     private ScoreSystem scoreSystem;
+    private CityHealth cityHealth;
 
     private void Start()
     {
         personAnim = GetComponent<Animator>();
         personMovement = GetComponent<Movement>();
         scoreSystem = FindObjectOfType<ScoreSystem>();
+        cityHealth = FindObjectOfType<CityHealth>();
     }
 
     private void Update()
@@ -25,6 +27,7 @@ public class Person : MonoBehaviour
 
     public void OnDie()
     {
+        cityHealth.OnDamage();
         scoreSystem.Score -= 200;
         personAnim.SetBool("IsDie", true);
 

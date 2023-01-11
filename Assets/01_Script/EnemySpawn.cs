@@ -13,7 +13,7 @@ public class EnemySpawn : MonoBehaviour
     {
         if (isSpawn)
         {
-            switch(RandomNum() / 10)
+            switch(RandomNum())
             {
                 case 0:
                 case 1:
@@ -21,18 +21,17 @@ public class EnemySpawn : MonoBehaviour
                 case 3:
                 case 4:
                 case 5:
-                case 6:
                     StartCoroutine(SpawnObj(0));
                     break;
+                case 6:
                 case 7:
-                case 8:
                     StartCoroutine(SpawnObj(1));
                     break;
-                case 9:
+                case 8:
                     StartCoroutine(SpawnObj(2));
                     break;
-                case 10:
-                    //장산범 소환
+                case 9:
+                    StartCoroutine(SpawnObj(3));
                     break;
             }
         }
@@ -49,6 +48,6 @@ public class EnemySpawn : MonoBehaviour
 
     private int RandomNum()
     {
-        return Random.Range(0, 100);
+        return Random.Range(0, 10);
     }
 }

@@ -10,7 +10,9 @@ public class Fox : MonoBehaviour
     private FoxEffect foxEf;
     private ScoreSystem scoreSystem;
     private CapsuleCollider2D capsuleCollider;
+    private CityHealth cityHealth;
     private bool isChange;
+    private bool isDie = true;
 
     private void Start()
     {
@@ -18,6 +20,7 @@ public class Fox : MonoBehaviour
         foxEf = GetComponentInChildren<FoxEffect>();
         capsuleCollider = GetComponent<CapsuleCollider2D>();
         scoreSystem = FindObjectOfType<ScoreSystem>();
+        cityHealth = FindObjectOfType<CityHealth>();
     }
 
     private void Update()
@@ -26,6 +29,13 @@ public class Fox : MonoBehaviour
         {
             isChange = true;
             OnChange();
+        }
+
+        if (gameObject.transform.position.y <= -7 && !isDie)
+        {
+            Destroy(gameObject);
+            cityHealth.OnDamage();
+            //마을 공격
         }
     }
 
@@ -37,6 +47,7 @@ public class Fox : MonoBehaviour
 
     public void OnDie()
     {
+        isDie = true;
         Destroy(capsuleCollider);
         foxAnim.SetBool("IsDie", true);
     }
@@ -44,6 +55,6 @@ public class Fox : MonoBehaviour
     public void FinishDie()
     {
         Destroy(gameObject);
-        scoreSystem.Score += 100;
+        scoreSystem.Score += 200;
     }
 }
