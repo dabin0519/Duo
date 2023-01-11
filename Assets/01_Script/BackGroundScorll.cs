@@ -11,14 +11,11 @@ public class BackGroundScorll : MonoBehaviour
 
     private void Update()
     {
-        if(moveSpeed > 0)
-        {
-            transform.position += moveDirection * moveSpeed *  Time.deltaTime;
+        transform.position += moveDirection * moveSpeed *  Time.deltaTime;
 
-            if(transform.position.y <= -scrollRange)
-            {
-                transform.position = target.position + Vector3.up * scrollRange;
-            }
+        if(transform.position.y <= -scrollRange)
+        {
+            transform.position = target.position + Vector3.up * scrollRange;
         }
     }
 }

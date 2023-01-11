@@ -28,10 +28,8 @@ public class EnemySpawn : MonoBehaviour
                     StartCoroutine(SpawnObj(1));
                     break;
                 case 8:
-                    StartCoroutine(SpawnObj(2));
-                    break;
                 case 9:
-                    StartCoroutine(SpawnObj(3));
+                    StartCoroutine(SpawnObj(2));
                     break;
             }
         }

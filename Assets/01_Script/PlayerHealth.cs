@@ -66,6 +66,8 @@ public class PlayerHealth : MonoBehaviour
             healthImage.fillAmount -= 0.3f;
             Health--;
             playerAnim.SetBool("IsHurt", true);
+            playerAnim.SetBool("PlayerAttack", false);
+            playerAnim.SetBool("PlayerAttack2", false);
         }
     }
 
