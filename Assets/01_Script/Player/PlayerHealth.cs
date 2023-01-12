@@ -18,6 +18,8 @@ public class PlayerHealth : MonoBehaviour
     private EnemySpawn enemySpawn;
     private BackGroundScorll bGS;
     private BackGroundScroll2 bGS2;
+    private CameraZoom cameraZoom;
+    private CameraFade cameraFade;
     private int health = 0;
     private bool isDie;
 
@@ -29,6 +31,8 @@ public class PlayerHealth : MonoBehaviour
         playerAnim = GetComponent<Animator>();
         bGS = FindObjectOfType<BackGroundScorll>();
         bGS2 = FindObjectOfType<BackGroundScroll2>();
+        cameraZoom = FindObjectOfType<CameraZoom>();
+        cameraFade = FindObjectOfType<CameraFade>();
     }
 
     void Update()
@@ -47,6 +51,8 @@ public class PlayerHealth : MonoBehaviour
         healthImage.fillAmount = 0;
         enemySpawn.enabled = false;
         StartCoroutine(SpeedDown());
+        cameraZoom.zoomActive = true;
+        cameraFade.Fade();
     }
 
     IEnumerator SpeedDown()

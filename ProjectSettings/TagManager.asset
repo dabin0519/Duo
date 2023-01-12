@@ -6,14 +6,15 @@ TagManager:
   tags:
   - Enemy
   - Attack
+  - Boss
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Boss
   - Water
   - UI
-  - 
+  - Enemy
   - 
   - 
   - 

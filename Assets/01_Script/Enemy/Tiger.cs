@@ -9,7 +9,6 @@ public class Tiger : MonoBehaviour
     private ScoreSystem scoreSystem;
     private CityHealth cityHealth;
 
-    private bool isDie = true;
 
     private void Start()
     {
@@ -21,7 +20,7 @@ public class Tiger : MonoBehaviour
 
     private void Update()
     {
-        if (gameObject.transform.position.y <= -7 && !isDie)
+        if (gameObject.transform.position.y <= -7)
         {
             Destroy(gameObject);
             cityHealth.OnDamage();
@@ -30,7 +29,6 @@ public class Tiger : MonoBehaviour
 
     public void OnDie()
     {
-        isDie = true;
         Destroy(circleCollider);
         tigerAnim.SetBool("IsDie", true);
     }

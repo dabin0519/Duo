@@ -20,5 +20,9 @@ public class ScoreSystem : MonoBehaviour
         {
             scoreTxt.text = $"Score : {score}";
         }
+        else if (score < 0)
+        {
+            score = 0;
+        }
     }
 }

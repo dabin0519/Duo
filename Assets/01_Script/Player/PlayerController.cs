@@ -10,17 +10,21 @@ public class PlayerController : MonoBehaviour
     public GameObject player;
     public GameObject attack;
     public GameObject attack2;
+    public AudioClip attackClip;    
     public float moveTime;
 
+    private AudioSource audioSource;
     private Animator playerAnim;
     private int maxLine;
     private int i;
     private int attackNum;
     private bool isMove;
+    private bool canAttack = true;
 
     private void Start()
     {
         playerAnim = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
         attack.SetActive(false);
         isMove = true;
         maxLine = transforms.Length;
@@ -37,7 +41,7 @@ public class PlayerController : MonoBehaviour
     {
         if (isMove)
         {
-            if (Input.GetKeyDown(KeyCode.RightArrow))
+            if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.A))
             {
                 if(i < maxLine - 1)
                 {
@@ -46,7 +50,7 @@ public class PlayerController : MonoBehaviour
                     playerAnim.SetFloat("MoveInput", 0.5f);
                 }
             }
-            else if (Input.GetKeyDown(KeyCode.LeftArrow))
+            else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.D))
             {
                 if(i > 0 )
                 {
@@ -55,18 +59,21 @@ public class PlayerController : MonoBehaviour
                     playerAnim.SetFloat("MoveInput", 1f);
                 }
             }
-            else if (Input.GetKeyDown(KeyCode.Space))
+            else if (Input.GetKeyDown(KeyCode.Space) && canAttack)
             {
+                audioSource.clip = attackClip;
+                audioSource.Play();
+                canAttack = false;
                 switch (attackNum)
                 {
                     case 0:
+                        attackNum = 1;
                         playerAnim.SetBool("PlayerAttack", true);
-                        attackNum++;
                     break;
 
                     case 1:
-                        playerAnim.SetBool("PlayerAttack2", true);
                         attackNum = 0;
+                        playerAnim.SetBool("PlayerAttack2", true);
                     break;
                 }
             }
@@ -99,6 +106,7 @@ public class PlayerController : MonoBehaviour
         playerAnim.SetBool("PlayerAttack2", false);
         attack.SetActive(false);
         attack2.SetActive(false);
+        canAttack = true;
     }
 
     IEnumerator MoveCheck()
