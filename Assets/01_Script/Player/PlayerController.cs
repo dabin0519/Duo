@@ -122,4 +122,9 @@ public class PlayerController : MonoBehaviour
         isMove = false;
         playerAnim.SetBool("IsDie", true);
     }
+
+    public void FinishHurt2()
+    {
+        canAttack = true;
+    }
 }

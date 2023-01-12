@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class PlayerHealth : MonoBehaviour
 {
     public Image healthImage;
+    public bool isBoss;
+    public GameObject canvas;
 
     public int Health
     {
@@ -20,6 +22,7 @@ public class PlayerHealth : MonoBehaviour
     private BackGroundScroll2 bGS2;
     private CameraZoom cameraZoom;
     private CameraFade cameraFade;
+    private Boss boss;
     private int health = 0;
     private bool isDie;
 
@@ -27,8 +30,9 @@ public class PlayerHealth : MonoBehaviour
     {
         health = 3;
         playerController = GetComponent<PlayerController>();
-        enemySpawn = FindObjectOfType<EnemySpawn>();
+        boss = FindObjectOfType<Boss>();
         playerAnim = GetComponent<Animator>();
+        enemySpawn = FindObjectOfType<EnemySpawn>();
         bGS = FindObjectOfType<BackGroundScorll>();
         bGS2 = FindObjectOfType<BackGroundScroll2>();
         cameraZoom = FindObjectOfType<CameraZoom>();
@@ -47,12 +51,14 @@ public class PlayerHealth : MonoBehaviour
 
     private void Die()
     {
+        if(isBoss) boss.enabled = false;
         playerController.OnDie();
         healthImage.fillAmount = 0;
         enemySpawn.enabled = false;
         StartCoroutine(SpeedDown());
         cameraZoom.zoomActive = true;
         cameraFade.Fade();
+        StartCoroutine(CanvasOn());
     }
 
     IEnumerator SpeedDown()
@@ -80,5 +86,11 @@ public class PlayerHealth : MonoBehaviour
     public void FinishHurt()
     {
         playerAnim.SetBool("IsHurt", false);
+    }
+
+    IEnumerator CanvasOn()
+    {
+        yield return new WaitForSeconds(2f);
+        canvas.SetActive(true);
     }
 }

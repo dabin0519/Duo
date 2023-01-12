@@ -1,45 +1,69 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class Boss : MonoBehaviour
 {
     public GameObject bossParents;
-    public GameObject twinklePrefab;
+    public GameObject twinklePrefab; 
+    public Vector3 offset;
+    public Image slider;
 
     private Animator bossAnim;
     private EnemySpawn enemySpawn;
-
-    public int BossHealth
-    {
-        get { return bossHealth; }
-        set { bossHealth = value; }
-    }
     private int bossHealth;
+    private bool isDie;
 
     private void Start()
     {
+        bossHealth = 50;
         bossAnim = GetComponent<Animator>();
         enemySpawn = FindObjectOfType<EnemySpawn>();
+        StartCoroutine(Pattern());
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if(bossHealth <= 0 && !isDie)
         {
+            isDie = true;
+            bossAnim.SetBool("IsDie", true);
+            StopAllCoroutines();
+            SceneManager.LoadScene(4);
+        }
+        slider.transform.position = Camera.main.WorldToScreenPoint(transform.parent.position + offset);
+    }
+   
+
+    IEnumerator Pattern()
+    {
+        while (bossHealth > 0)
+        {
+            StartCoroutine(SpawnEnemy());
+            yield return new WaitForSeconds(10f);
             StartCoroutine(AttackPattern());
-        }
-        
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
+            yield return new WaitForSeconds(3f);
+            StartCoroutine(AttackPattern());
+            yield return new WaitForSeconds(3f);
+            StartCoroutine(AttackPattern());
+            yield return new WaitForSeconds(3f);
             StartCoroutine(DownPattern());
+            yield return new WaitForSeconds(5f);
         }
+    }
+
+    IEnumerator SpawnEnemy()
+    {
+        enemySpawn.enabled = true;
+        yield return new WaitForSeconds(10f);
+        enemySpawn.enabled = false;
     }
 
     IEnumerator AttackPattern()
     {
-        enemySpawn.enabled = false;
         bossAnim.SetBool("IsWaiting", true);
         //보스 공격 전 경고
         int i = RandomNum();
@@ -49,8 +73,6 @@ public class Boss : MonoBehaviour
 
         bossParents.transform.position = new Vector2(i, 3.5f);
         bossAnim.SetBool("IsAttack", true);
-        yield return new WaitForSeconds(5f);
-        enemySpawn.enabled = true; 
     }
 
     IEnumerator DownPattern()
@@ -58,6 +80,7 @@ public class Boss : MonoBehaviour
         bossParents.transform.DOMove(new Vector3(0, -2), 1f);
         yield return new WaitForSeconds(5f);
         bossParents.transform.DOMove(new Vector3(0, 3.5f), 1f);
+        bossAnim.SetBool("IsHurt", false);
     }
 
     private int RandomNum()
@@ -76,10 +99,16 @@ public class Boss : MonoBehaviour
     {
         bossAnim.SetBool("IsHurt", true);
         bossHealth--;
+        slider.fillAmount -= 0.02f;
     }
 
     public void FinishHurt()
     {
         bossAnim.SetBool("IsHurt", false);
+    }
+
+    public void FinishDie()
+    {
+        SceneManager.LoadScene("Dabin");
     }
 }

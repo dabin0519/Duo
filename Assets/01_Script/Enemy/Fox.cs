@@ -12,7 +12,6 @@ public class Fox : MonoBehaviour
     private CapsuleCollider2D capsuleCollider;
     private CityHealth cityHealth;
     private bool isChange;
-    private bool isDie = true;
 
     private void Start()
     {
@@ -31,15 +30,16 @@ public class Fox : MonoBehaviour
             OnChange();
         }
 
-        if (gameObject.transform.position.y <= -7 && !isDie)
+        if (gameObject.transform.position.y <= -7)
         {
             Destroy(gameObject);
             cityHealth.OnDamage();
+            scoreSystem.Score -= 100;
             //마을 공격
         }
     }
 
-    private void  OnChange()
+    private void OnChange()
     {
         foxEf.OnEffect();
         foxAnim.SetBool("IsChange", true);
@@ -47,7 +47,6 @@ public class Fox : MonoBehaviour
 
     public void OnDie()
     {
-        isDie = true;
         Destroy(capsuleCollider);
         foxAnim.SetBool("IsDie", true);
     }

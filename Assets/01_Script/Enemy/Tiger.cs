@@ -24,6 +24,7 @@ public class Tiger : MonoBehaviour
         {
             Destroy(gameObject);
             cityHealth.OnDamage();
+            scoreSystem.Score -= 100;
         }
     }
 

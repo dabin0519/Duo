@@ -27,6 +27,7 @@ public class Damage : MonoBehaviour
     private Boss boss;
     private PlayerHealth playerHealth;
     private AudioSource audioSource;
+    private GameObject slashPrefab;
 
     private void Awake()
     {
@@ -86,7 +87,7 @@ public class Damage : MonoBehaviour
 
     IEnumerator Effect()
     {
-        GameObject slashPrefab = Instantiate(effectPrefab, transform.position, Quaternion.Euler(0, 0, RandomNum()));
+        slashPrefab = Instantiate(effectPrefab, transform.position, Quaternion.Euler(0, 0, RandomNum()));
         yield return new WaitForSeconds(effectTime);
         Destroy(slashPrefab);
     }

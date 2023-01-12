@@ -6,6 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/00_Scenes/Main.unity
+    path: Assets/00_Scenes/Menu.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/00_Scenes/Dabin.unity
+    guid: 0e5fa54966fa845479c5ac99fb645772
+  - enabled: 1
+    path: Assets/00_Scenes/Boss.unity
+    guid: ae0b80d284da4eb4f80392ac9c049d5a
+  - enabled: 1
+    path: Assets/00_Scenes/End(Fire).unity
+    guid: b96ddfef5155000488cfaac70ee78e43
+  - enabled: 1
+    path: Assets/00_Scenes/End(Good).unity
+    guid: ec758128190cc8347a90ab5542d8e97a
   m_configObjects: {}

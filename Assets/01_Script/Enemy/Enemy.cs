@@ -24,6 +24,7 @@ public class Enemy : MonoBehaviour
             Destroy(gameObject);
             //마을 공격
             cityHealth.OnDamage();
+            scoreSystem.Score -= 100;
         }
     }
 

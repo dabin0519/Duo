@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class ScoreSystem : MonoBehaviour
@@ -23,6 +24,11 @@ public class ScoreSystem : MonoBehaviour
         else if (score < 0)
         {
             score = 0;
+        }
+        
+        if(score >= 1500)
+        {
+            SceneManager.LoadScene(2);
         }
     }
 }

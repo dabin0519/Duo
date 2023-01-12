@@ -2,22 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class CityHealth : MonoBehaviour
 {
     public Image health;
+    public bool boss;
 
     private void Update()
     {
         if(health.fillAmount == 0)
         {
-            //Die
-            Debug.Log("die");
+            SceneManager.LoadScene("End(Fire)");
         }
     }
 
     public void OnDamage()
     {
-        health.fillAmount -= 0.25f;
+        if(!boss) health.fillAmount -= 0.25f;
     }
 }
