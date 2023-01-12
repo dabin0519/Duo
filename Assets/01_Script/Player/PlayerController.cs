@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
     {
         if (isMove)
         {
-            if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.A))
+            if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
             {
                 if(i < maxLine - 1)
                 {
@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
                     playerAnim.SetFloat("MoveInput", 0.5f);
                 }
             }
-            else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.D))
+            else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
             {
                 if(i > 0 )
                 {
