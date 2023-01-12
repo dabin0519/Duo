@@ -7,6 +7,7 @@ using TMPro;
 public class ScoreSystem : MonoBehaviour
 {
     public TextMeshProUGUI scoreTxt;
+    public bool boss;
     public int Score
     {
         get { return score; }
@@ -26,7 +27,7 @@ public class ScoreSystem : MonoBehaviour
             score = 0;
         }
         
-        if(score >= 1500)
+        if(score >= 1500 && !boss)
         {
             SceneManager.LoadScene(2);
         }

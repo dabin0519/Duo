@@ -77,7 +77,7 @@ public class Damage : MonoBehaviour
         if(type == ColliderType.Player && collision.gameObject.tag == "Enemy")
         {
             playerHealth.OnDamage();
-            Destroy(collision.gameObject);
+            StartCoroutine(Die(collision.gameObject));
         }
         else if(type == ColliderType.Player && collision.gameObject.tag == "Boss")
         {
@@ -90,5 +90,11 @@ public class Damage : MonoBehaviour
         slashPrefab = Instantiate(effectPrefab, transform.position, Quaternion.Euler(0, 0, RandomNum()));
         yield return new WaitForSeconds(effectTime);
         Destroy(slashPrefab);
+    }
+
+    IEnumerator Die(GameObject gameObject)
+    {
+        yield return new WaitForSeconds(0.3f);
+        Destroy(gameObject);
     }
 }
