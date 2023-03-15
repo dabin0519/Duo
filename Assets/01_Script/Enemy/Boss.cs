@@ -42,6 +42,7 @@ public class Boss : MonoBehaviour
     {
         while (bossHealth > 0)
         {
+            bossAnim.SetBool("IsHurt", false);
             StartCoroutine(SpawnEnemy());
             yield return new WaitForSeconds(10f);
             StartCoroutine(AttackPattern());
