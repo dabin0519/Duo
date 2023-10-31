@@ -110,6 +110,6 @@ public class Boss : MonoBehaviour
 
     public void FinishDie()
     {
-        SceneManager.LoadScene("Dabin");
+        SceneManager.LoadScene("Game");
     }
 }

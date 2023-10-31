@@ -49,7 +49,8 @@ public class Damage : MonoBehaviour
     {
         if(collision.gameObject.tag == "Attack")
         {
-            StartCoroutine(Effect());
+            slashPrefab = Instantiate(effectPrefab, transform.position, Quaternion.Euler(0, 0, RandomNum()));
+            Destroy(slashPrefab, effectTime);
             audioSource.clip = hitClip;
             audioSource.Play();
             if(type == ColliderType.Enemy)
@@ -83,13 +84,6 @@ public class Damage : MonoBehaviour
         {
             playerHealth.OnDamage();
         }
-    }
-
-    IEnumerator Effect()
-    {
-        slashPrefab = Instantiate(effectPrefab, transform.position, Quaternion.Euler(0, 0, RandomNum()));
-        yield return new WaitForSeconds(effectTime);
-        Destroy(slashPrefab);
     }
 
     IEnumerator Die(GameObject gameObject)
