@@ -9,8 +9,8 @@ public class Fox : MonoBehaviour
     private Animator foxAnim;
     private FoxEffect foxEf;
     private ScoreSystem scoreSystem;
-    private CapsuleCollider2D capsuleCollider;
     private CityHealth cityHealth;
+    private CapsuleCollider2D capsuleCollider;
     private bool isChange;
 
     private void Start()

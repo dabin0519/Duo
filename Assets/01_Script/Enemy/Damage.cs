@@ -10,6 +10,7 @@ public enum ColliderType
     Person,
     Fox,
     Tiger,
+    Oni,
     Boss
 }
 
@@ -28,6 +29,7 @@ public class Damage : MonoBehaviour
     private PlayerHealth playerHealth;
     private AudioSource audioSource;
     private GameObject slashPrefab;
+    private Oni _oni;
 
     private void Awake()
     {
@@ -38,6 +40,7 @@ public class Damage : MonoBehaviour
         fox = GetComponent<Fox>();
         tiger = GetComponent<Tiger>();
         playerHealth = GetComponent<PlayerHealth>();
+        _oni = GetComponent<Oni>();
     }
 
     private int RandomNum()
@@ -72,6 +75,10 @@ public class Damage : MonoBehaviour
             else if(type == ColliderType.Boss)
             {
                 boss.OnHurt();
+            }
+            else if(type == ColliderType.Oni)
+            {
+                _oni.OnHurt();
             }
         }
 
