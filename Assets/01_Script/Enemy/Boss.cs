@@ -98,14 +98,9 @@ public class Boss : MonoBehaviour
 
     public void OnHurt()
     {
-        bossAnim.SetBool("IsHurt", true);
+        bossAnim.SetTrigger("Hurt");
         bossHealth--;
         slider.fillAmount -= 0.02f;
-    }
-
-    public void FinishHurt()
-    {
-        bossAnim.SetBool("IsHurt", false);
     }
 
     public void FinishDie()
