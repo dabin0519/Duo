@@ -3519,6 +3519,10 @@ PrefabInstance:
       value: Boss
       objectReference: {fileID: 0}
     - target: {fileID: 3635786746348419904, guid: 6f2cc895c0ebc9149b2eb7e5f695ccf7, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3635786746348419904, guid: 6f2cc895c0ebc9149b2eb7e5f695ccf7, type: 3}
       propertyPath: bossParents
       value: 
       objectReference: {fileID: 1610920030}

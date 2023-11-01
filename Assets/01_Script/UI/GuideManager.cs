@@ -15,7 +15,6 @@ public class GuideManager : MonoBehaviour
 {
     [SerializeField] private Guide[] _guide;
     [SerializeField] private GuideElement _guideElementPrefab;
-    [SerializeField] private GuideElement _bossElementPrefab;
     [SerializeField] private float _offset;
 
     private void Awake()
