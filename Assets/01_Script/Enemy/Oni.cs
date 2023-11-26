@@ -7,6 +7,7 @@ public class Oni : MonoBehaviour
     [SerializeField] private float _protectTime;
     [SerializeField] private float _protectPosY;
     [SerializeField] private GameObject _protect;
+    [SerializeField] private int _hp = 3;
 
     private Animator _oniAnim;
     private CircleCollider2D _circleCollider;
@@ -14,7 +15,6 @@ public class Oni : MonoBehaviour
     private CityHealth _cityHealth;
     private Movement _movement;
 
-    private int _hp = 3;
 
     private void Awake()
     {
@@ -32,11 +32,6 @@ public class Oni : MonoBehaviour
             Destroy(gameObject);
             _cityHealth.OnDamage();
             _scoreSystem.Score -= 100;
-        }
-
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            OnHurt();
         }
     }
 

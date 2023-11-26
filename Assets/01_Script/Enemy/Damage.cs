@@ -84,6 +84,7 @@ public class Damage : MonoBehaviour
 
         if(type == ColliderType.Player && collision.gameObject.tag == "Enemy")
         {
+            Debug.Log("??");
             playerHealth.OnDamage();
             StartCoroutine(Die(collision.gameObject));
         }
