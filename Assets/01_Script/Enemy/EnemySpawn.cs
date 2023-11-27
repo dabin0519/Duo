@@ -15,51 +15,14 @@ public class EnemySpawn : MonoBehaviour
     {
         if (isSpawn && !isBoss)
         {
-            switch(RandomNum())
-            {
-                case 0:
-                case 1:
-                case 2:
-                case 3:
-                case 4:
-                    StartCoroutine(SpawnObj(0));
-                    break;
-                case 5:
-                case 6:
-                    StartCoroutine(SpawnObj(1));
-                    break;
-                case 7:
-                    StartCoroutine(SpawnObj(2));
-                    break;
-                case 8:
-                    StartCoroutine(SpawnObj(3));
-                    break;
-                case 9:
-                    StartCoroutine(SpawnObj(4));
-                    break;
-            }
+            int randIdx = Random.Range(0, spawnObj.Length);
+
+            StartCoroutine(SpawnObj(randIdx));
         }
         else if(isSpawn && isBoss)
         {
-            switch (RandomNum())
-            {
-                case 0:
-                case 1:
-                case 2:
-                case 3:
-                case 4:
-                case 5:
-                    StartCoroutine(SpawnObj(0));
-                    break;
-                case 6:
-                case 7:
-                    StartCoroutine(SpawnObj(1));
-                    break;
-                case 8:
-                case 9:
-                    StartCoroutine(SpawnObj(2));
-                    break;
-            }
+            int randomIdx = Random.Range(0, spawnObj.Length - 1);
+            StartCoroutine(SpawnObj(randomIdx));
         }
     }
 
