@@ -9,6 +9,7 @@ public class Ghost : MonoBehaviour
     private BoxCollider2D _boxCollider;
     private ScoreSystem _scoreSystem;
     private CityHealth _cityHealth;
+    private Movement _movement;
     private EnemySpawn _enemySpawn;
 
     private bool _isSkill;
@@ -19,6 +20,7 @@ public class Ghost : MonoBehaviour
         _enemyAnim = GetComponent<Animator>();
         _scoreSystem = FindObjectOfType<ScoreSystem>();
         _cityHealth = FindObjectOfType<CityHealth>();
+        _movement = FindObjectOfType<Movement>();
         _enemySpawn = FindObjectOfType<EnemySpawn>();
     }
 
@@ -41,13 +43,14 @@ public class Ghost : MonoBehaviour
 
     public void ChangeLine()
     {
-
+        _movement.moveDirection = Vector3.zero;
+        _enemyAnim.SetTrigger("Teleport");
     }
 
     public void OnDie()
     {
         Destroy(_boxCollider);
-        _enemyAnim.SetBool("IsDie", true);
+        _enemyAnim.SetTrigger("Die");
     }
 
     public void FinishDie()
