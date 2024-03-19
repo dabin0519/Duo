@@ -167,11 +167,12 @@ MonoBehaviour:
   - {fileID: 667258347924897162, guid: c23bcbc2f0e50a24cb9fcaa08749b5fb, type: 3}
   - {fileID: 7236000433146727980, guid: 58e24cd38313c2a408c6d715773be123, type: 3}
   - {fileID: 901248961771685040, guid: c11a88967cb34c745958c10f7fb22d89, type: 3}
+  - {fileID: 5443373739774604224, guid: 48d4b81457445984c97bd04b8a634b3f, type: 3}
   enemySpawnPos:
   - {fileID: 617742740029987215}
   - {fileID: 4734126982695623408}
   - {fileID: 6452683227053487470}
-  spawnTime: 2
+  spawnTime: 2.5
   isBoss: 0
 --- !u!1 &4542706866559251916
 GameObject:
@@ -246,7 +247,7 @@ Transform:
   m_GameObject: {fileID: 5785380855557609784}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

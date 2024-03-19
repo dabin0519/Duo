@@ -789,7 +789,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 770}
+  m_AnchoredPosition: {x: 0, y: -763}
   m_SizeDelta: {x: 1080, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &837692350
@@ -2805,7 +2805,7 @@ RectTransform:
   m_GameObject: {fileID: 1956868711}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 837692349}
@@ -2813,7 +2813,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 400, y: 150}
+  m_SizeDelta: {x: 489, y: 131}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1956868713
 MonoBehaviour:
@@ -3073,13 +3073,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 563561134357829932, guid: 8b0708f8fa9db514f810072ee44da9ea, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 563561134357829932, guid: 8b0708f8fa9db514f810072ee44da9ea, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -10
+    - target: {fileID: 869638455857272079, guid: 8b0708f8fa9db514f810072ee44da9ea, type: 3}
+      propertyPath: spawnTime
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1517874860893203603, guid: 8b0708f8fa9db514f810072ee44da9ea, type: 3}
       propertyPath: fadeImage
@@ -3145,10 +3141,6 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 969967299}
-    - target: {fileID: 4081177078325238875, guid: 8b0708f8fa9db514f810072ee44da9ea, type: 3}
-      propertyPath: zoomActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4081177078325238875, guid: 8b0708f8fa9db514f810072ee44da9ea, type: 3}
       propertyPath: Target.Array.data[1]
       value: 

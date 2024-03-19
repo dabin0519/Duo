@@ -4,12 +4,20 @@ using UnityEngine;
 
 public class EnemySpawn : MonoBehaviour
 {
+    public static EnemySpawn Instance;
+
     public GameObject[] spawnObj;
     public Transform[] enemySpawnPos;
     public float spawnTime = 2;
     public bool isBoss;
 
     private bool isSpawn = true;
+
+    private void Awake()
+    {
+        if(Instance == null)
+            Instance = this;
+    }
 
     private void Update()
     {
